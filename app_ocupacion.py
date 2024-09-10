@@ -100,11 +100,10 @@ if st.sidebar.button('CALCULAR OCUPACION'):
                     "type": "gauge",
                     "axisLine": {
                         "lineStyle": {
-                            "width": 10,
-                        },
+                            "width": 10,},
                     },
                     "progress": {"show": "true", "width": 15},
-                    "detail": {"valueAnimation": "true", "formatter": '{value}%', "color": "violet"},
+                    "detail": {"valueAnimation": "false", "formatter": '{value}%', "color": "violet"},
                     "data": [{"value": ocupacion, "name": "Ocupación"}],
                 }
             ],
@@ -116,24 +115,23 @@ if st.sidebar.button('CALCULAR OCUPACION'):
     # Mostrar el mapa en Streamlit
     #st_folium(mapa, width=1500, height=500)
     
-    #Crear 2 columnas para la tabla y el velocímetro
+    #Crear tabla
+    #st.dataframe(data =RE , column_config={"precio_alquiler_noche": "Precio alquiler",
+                                               #"ocupacion":'Ocupación esperada',
+                                                #'beneficio':'Beneficio',
+                                                 #'rentabilidad_esperada':'Rentabilidad'},
+                     #hide_index = True, height=70, width=800, key=0)
+    
+    #Crear dos columnas para las métricas
     col1,col2 = st.columns(2)
     with col1:
-        st.dataframe(data =RE , column_config={"precio_alquiler_noche": "Precio alquiler",
-                                               "ocupacion":'Ocupación esperada',
-                                                'beneficio':'Beneficio',
-                                                 'rentabilidad_esperada':'Rentabilidad'},
-                     hide_index = True, height=70, width=800, key=0)
-    with col2:
-        st_echarts(options=ocupacion_options, width="120%", height="400px", key=1)
-
-    #Métricas
-    col1,col2 = st.columns(2)
-    with col1:
-        st.write('Los beneficios obtenidos del alquiler de la vivienda con la ocupación esperada es de:')
-        st.metric(label="BENEFICIO", value=formato_moneda(beneficio))
-    with col2:
         st.write('La rentabilidad esperada teniendo en cuenta un 30% de gastos de los beneficios:')
         st.metric(label="RENTABILIDAD", value=formato_moneda(rentabilidad))
+    with col2:
+        st.write('Los beneficios obtenidos del alquiler de la vivienda con la ocupación esperada es de:')
+        st.metric(label="BENEFICIO", value=formato_moneda(beneficio))
+    
+    #Añadir el velocímetro
+    st_echarts(options=ocupacion_options, width="120%", height="400px", key=1)
 else:
     st.write('DEFINE LAS CARACTERÍSTICAS DE LA VIVIENDA Y HAZ CLICK EN CALCULAR OCUPACIÓN')
