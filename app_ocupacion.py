@@ -52,7 +52,7 @@ with st.sidebar:
      bedrooms = st.radio('Habitaciones en la vivienda ',["1", "2", "3","4"], horizontal=True)
      beds = st.radio('Camas disponibles :bed:',["1", "2", "3","4"], horizontal=True)
      room_type = st.selectbox('Tipo de alquiler 	:house:', ['Entire home/apt','Private room','Shared room'])
-     latitude = st.number_input('Latitud :world_map:', min_value=min_lat, max_value=max_lat, value=None, step=step_lat)
+     latitude = st.number_input('Latitud. Busca la ubicación de tu vivienda en google maps y pulsa con el botón derecho sobre el icono de la app para copiar la latitud y longitud :world_map:', min_value=min_lat, max_value=max_lat, value=None, step=step_lat)
      longitude = st.number_input('Longitud :world_map:', min_value=min_lon, max_value=max_lon, value=None, step=step_lon)
      neighbourhood = st.selectbox('Barrio :cityscape:', ['no asignado','Aeropuerto Viejo', 'Avda. de la Paz', 'Bda. Pino Montano', 'Cruz Roja, Capuchinos', 'El Cano, Los Bermejales', 'El Porvenir','El Tardón, El Carmen','Encarnación, Regina','Felipe II, Los Diez Mandamientos',
                'Feria','Giralda Sur','Heliópolis','Hermandades, La Carrasca','Huerta de Santa Teresa','Huerta del Pilar','Juan XXIII','La Barzola','La Buhaira','La Calzada','La Corza','La Plata','Las Avenidas','Las Huertas',
