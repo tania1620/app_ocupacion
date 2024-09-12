@@ -3,10 +3,10 @@ import streamlit as st
 from streamlit_echarts import st_echarts  # Esto es para los gráficos
 import pandas as pd
 import folium
-#import locale
+import locale
 
 # Establecer la configuración regional para el formateo de moneda
-#locale.setlocale(locale.LC_ALL, 'es_ES.UTF-8')  # Ajusta la configuración según tu localización
+locale.setlocale(locale.LC_ALL, 'es_ES.UTF-8')  # Ajusta la configuración según tu localización
 #def format_money(res: int) -> str:
 #    """
 #    Given some int, convert it to currency
@@ -24,8 +24,8 @@ import folium
 #st.write(money)
 
 # Definir una función para formatear números a formato de moneda
-#def formato_moneda(numero):
-#    return locale.currency(numero, grouping=True)
+def formato_moneda(numero):
+    return locale.currency(numero, grouping=True)
 
 #CONFIGURACION DE LA PÁGINA
 st.set_page_config(

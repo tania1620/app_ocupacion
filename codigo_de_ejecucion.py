@@ -3,6 +3,7 @@
 import numpy as np
 import pandas as pd
 import pickle
+import gzip
 
 #2.FUNCIONES DE SOPORTE
 def eliminar_duplicados(df):
@@ -128,7 +129,7 @@ def ejecutar_modelos(df):
     x = eliminar_duplicados(calidad_datos(df))
                      
     #3.CARGA PIPE DE EJECUCION
-    with open('C:/Users/tania.camacho/Desktop/Master/EstructuraDirectorio/04_PORTAFOLIO/01_PORTAFOLIO_INMO/03_Notebooks/03_Sistema/app_ocupacion/pipe_ejecucion.pickle', mode='rb') as file:
+    with gzip.open('C:/Users/tania.camacho/Desktop/Master/EstructuraDirectorio/04_PORTAFOLIO/01_PORTAFOLIO_INMO/03_Notebooks/03_Sistema/app_ocupacion/pipe_ejecucion.pickle', mode='rb') as file:
         pipe_ejecucion = pickle.load(file)
 
     #EJECUCION
