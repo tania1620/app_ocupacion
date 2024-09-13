@@ -5,11 +5,11 @@ import pandas as pd
 import locale
 
 # Establecer la configuración regional para el formateo de moneda
-#locale.setlocale(locale.LC_ALL, 'es_ES.UTF-8')  # Ajusta la configuración según tu localización
+locale.setlocale(locale.LC_ALL, 'es_ES.UTF-8')  # Ajusta la configuración según tu localización
 
 # Definir una función para formatear números a formato de moneda
-#def formato_moneda(numero):
-#    return locale.currency(numero, grouping=True)
+def formato_moneda(numero):
+    return locale.currency(numero, grouping=True)
 
 #CONFIGURACION DE LA PÁGINA
 st.set_page_config(
@@ -112,10 +112,10 @@ if st.sidebar.button('CALCULAR OCUPACION'):
     col1,col2 = st.columns(2)
     with col1:
         st.write('La rentabilidad esperada teniendo en cuenta un 30% de gastos de los beneficios:')
-        st.metric(label="RENTABILIDAD", value=rentabilidad)
+        st.metric(label="RENTABILIDAD", value=formato_moneda(rentabilidad))
     with col2:
         st.write('Los beneficios obtenidos del alquiler de la vivienda con la ocupación esperada es de:')
-        st.metric(label="BENEFICIO", value=beneficio)
+        st.metric(label="BENEFICIO", value=formato_moneda(beneficio))
     
     #Añadir el velocímetro
     st_echarts(options=ocupacion_options, width="120%", height="400px", key=1)
