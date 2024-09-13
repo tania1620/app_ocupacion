@@ -2,14 +2,11 @@ from codigo_de_ejecucion import *
 import streamlit as st
 from streamlit_echarts import st_echarts  # Esto es para los gráficos
 import pandas as pd
-import locale
+from babel.numbers import format_currency
 
 # Establecer la configuración regional para el formateo de moneda
-locale.setlocale(locale.LC_ALL, 'es_ES.UTF-8')  # Ajusta la configuración según tu localización
-
-# Definir una función para formatear números a formato de moneda
 def formato_moneda(numero):
-    return locale.currency(numero, grouping=True)
+    return format_currency(numero, 'EUR', locale='es_ES')
 
 #CONFIGURACION DE LA PÁGINA
 st.set_page_config(
