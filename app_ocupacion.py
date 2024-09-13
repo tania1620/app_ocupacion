@@ -57,35 +57,43 @@ with st.sidebar:
 #MAIN
 st.title(':violet[CALCULADORA RENTABILIDAD VIVIENDA]')
 
+# Verificación de campos vacíos o no válidos
+def datos_completos():
+    campos = [accommodates, bathrooms, bedrooms, beds, latitude, longitude, neighbourhood, neighbourhood_group, price, precio_compra, m2]
+    return all(campos)  # Si todos los campos tienen un valor válido, retorna True
 #CALCULAR
 
-#Crear el registro
-registro = pd.DataFrame({'accommodates':int(accommodates),
-                         'bathrooms':float(bathrooms),
-                         'bedrooms':float(bedrooms),
-                         'beds': float(beds),
-                         'latitude':latitude,
-                         'longitude':longitude,
-                         'm2':int(m2),
-                         'minimum_nights':int(minimum_nights),
-                         'neighbourhood':str(neighbourhood),
-                         'neighbourhood_group':str(neighbourhood_group),
-                         'price':float(price),
-                         'precio_compra':int(precio_compra),
-                         'room_type':str(room_type),
-                         'availability_365':int(availability_365),
-                         'precio_m2': int(precio_m2)}
-                        ,index=[0])
-
-#CALCULAR RIESGO
-
 if st.sidebar.button('CALCULAR OCUPACION'):
+    if not datos_completos():  # Validación de datos
+        st.error("Debe introducir todos los datos necesarios para ejecutar el cálculo.")
+    else:
+        # Crear el registro
+        registro = pd.DataFrame({
+            'accommodates': int(accommodates),
+            'bathrooms': float(bathrooms),
+            'bedrooms': float(bedrooms),
+            'beds': float(beds),
+            'latitude': latitude,
+            'longitude': longitude,
+            'm2': int(m2),
+            'minimum_nights': int(minimum_nights),
+            'neighbourhood': str(neighbourhood),
+            'neighbourhood_group': str(neighbourhood_group),
+            'price': float(price),
+            'precio_compra': int(precio_compra),
+            'room_type': str(room_type),
+            'availability_365': int(availability_365),
+            'precio_m2': int(precio_m2)
+        }, index=[0])
+
+    #CALCULAR RIESGO
     #Ejecutar el scoring
     RE = ejecutar_modelos(registro)
     precio_alquiler_noche = int(RE.precio_alquiler_noche)
     ocupacion = float(RE.ocupacion)
     beneficio = float(RE.beneficio)
     rentabilidad = float(RE.rentabilidad_esperada)
+
     #Velocimetro para ocupacion
     ocupacion_options = {
             "tooltip": {"formatter": "{a} <br/>{b} : {c}%"},
