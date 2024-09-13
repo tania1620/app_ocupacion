@@ -6,26 +6,11 @@ import folium
 import locale
 
 # Establecer la configuración regional para el formateo de moneda
-locale.setlocale(locale.LC_ALL, 'es_ES.UTF-8')  # Ajusta la configuración según tu localización
-#def format_money(res: int) -> str:
-#    """
-#    Given some int, convert it to currency
-#    Args:
-#        res (int): Money input as int
-#    Returns:
-#        str: Currency as string
-#    """
-#    locale.setlocale(locale.LC_ALL, "es_ES.UTF-8")
-#    return locale.currency(res, grouping=True)
-
-
-#money = format_money(2)
-
-#st.write(money)
+#locale.setlocale(locale.LC_ALL, 'es_ES.UTF-8')  # Ajusta la configuración según tu localización
 
 # Definir una función para formatear números a formato de moneda
-def formato_moneda(numero):
-    return locale.currency(numero, grouping=True)
+#def formato_moneda(numero):
+    #return locale.currency(numero, grouping=True)
 
 #CONFIGURACION DE LA PÁGINA
 st.set_page_config(
