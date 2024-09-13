@@ -2,15 +2,14 @@ from codigo_de_ejecucion import *
 import streamlit as st
 from streamlit_echarts import st_echarts  # Esto es para los gráficos
 import pandas as pd
-import folium
 import locale
 
 # Establecer la configuración regional para el formateo de moneda
-#locale.setlocale(locale.LC_ALL, 'es_ES.UTF-8')  # Ajusta la configuración según tu localización
+locale.setlocale(locale.LC_ALL, 'es_ES.UTF-8')  # Ajusta la configuración según tu localización
 
 # Definir una función para formatear números a formato de moneda
-#def formato_moneda(numero):
-    #return locale.currency(numero, grouping=True)
+def formato_moneda(numero):
+    return locale.currency(numero, grouping=True)
 
 #CONFIGURACION DE LA PÁGINA
 st.set_page_config(
@@ -108,18 +107,6 @@ if st.sidebar.button('CALCULAR OCUPACION'):
             ],
         }
 
-    # Crear mapa
-    #mapa = folium.Map(location=[latitude, longitude], zoom_start=10)
-    #folium.Marker([latitude, longitude], popup="Ubicación de la vivienda").add_to(mapa)
-    # Mostrar el mapa en Streamlit
-    #st_folium(mapa, width=1500, height=500)
-    
-    #Crear tabla
-    #st.dataframe(data =RE , column_config={"precio_alquiler_noche": "Precio alquiler",
-                                               #"ocupacion":'Ocupación esperada',
-                                                #'beneficio':'Beneficio',
-                                                 #'rentabilidad_esperada':'Rentabilidad'},
-                     #hide_index = True, height=70, width=800, key=0)
     
     #Crear dos columnas para las métricas
     col1,col2 = st.columns(2)
