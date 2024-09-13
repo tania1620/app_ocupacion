@@ -129,7 +129,7 @@ def ejecutar_modelos(df):
     x = eliminar_duplicados(calidad_datos(df))
                      
     #3.CARGA PIPE DE EJECUCION
-    with gzip.open('tania1620/app_ocupacion/main/pipe_ejecucion.pickle', mode='rb') as file:
+    with gzip.open('/app_ocupacion/pipe_ejecucion.pickle', mode='rb') as file:
         pipe_ejecucion = pickle.load(file)
 
     #EJECUCION
